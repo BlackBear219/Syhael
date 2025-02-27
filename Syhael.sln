@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35728.132 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syhael", "Syhael\Syhael.csproj", "{F6EA00F3-9F94-4E37-B408-EDCA7046993F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syhael.AppHost", "Syhael.AppHost\Syhael.AppHost.csproj", "{EF806AB7-89BB-4F04-9BA2-039E9B1060E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syhael.ServiceDefaults", "Syhael.ServiceDefaults\Syhael.ServiceDefaults.csproj", "{2B75B3B0-F715-47B0-B7B9-CD81F88B8B7C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6EA00F3-9F94-4E37-B408-EDCA7046993F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6EA00F3-9F94-4E37-B408-EDCA7046993F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6EA00F3-9F94-4E37-B408-EDCA7046993F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6EA00F3-9F94-4E37-B408-EDCA7046993F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF806AB7-89BB-4F04-9BA2-039E9B1060E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF806AB7-89BB-4F04-9BA2-039E9B1060E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF806AB7-89BB-4F04-9BA2-039E9B1060E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF806AB7-89BB-4F04-9BA2-039E9B1060E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B75B3B0-F715-47B0-B7B9-CD81F88B8B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B75B3B0-F715-47B0-B7B9-CD81F88B8B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B75B3B0-F715-47B0-B7B9-CD81F88B8B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B75B3B0-F715-47B0-B7B9-CD81F88B8B7C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

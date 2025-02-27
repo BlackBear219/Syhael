@@ -1,0 +1,50 @@
+name: Deploy ASP.NET Core Web API to Azure VM  
+  
+on:  
+  push:  
+    branches:  
+      - master  
+  
+jobs:  
+  build-and-deploy:  
+    runs-on: ubuntu-latest 
+    permissions:
+      contents: read
+      packages: write
+  
+    steps:  
+    - name: Checkout repository  
+      uses: actions/checkout@v2  
+  
+    - name: Set up Docker Buildx  
+      uses: docker/setup-buildx-action@v1  
+  
+    - name: Log in to GitHub Container Registry  
+      uses: docker/login-action@v1  
+      with:  
+        registry: ghcr.io  
+        username: ${{ github.actor }}  
+        password: ${{ secrets.GITHUB_TOKEN }}  
+  
+    - name: Build and push Docker image  
+      run: |  
+        docker build -t ghcr.io/${{ github.repository }}:latest -f Syhael/Dockerfile . 
+        docker push ghcr.io/${{ github.repository }}:latest  
+  
+    - name: Install SSHpass  
+      run: sudo apt-get install -y sshpass  
+  
+    - name: Deploy to Azure VM  
+      env:  
+        AZURE_VM_USERNAME: ${{ secrets.AZURE_VM_USERNAME }}  
+        AZURE_VM_PASSWORD: ${{ secrets.AZURE_VM_PASSWORD }}  
+        AZURE_VM_ENDPOINT: ${{ secrets.AZURE_VM_ENDPOINT }}  
+      run: |  
+        sshpass -p "$AZURE_VM_PASSWORD" ssh -o StrictHostKeyChecking=no $AZURE_VM_USERNAME@$AZURE_VM_ENDPOINT << EOF
+          docker pull ghcr.io/${{ github.repository }}:latest  
+          docker stop myapp || true  
+          docker rm myapp || true  
+          docker run -d --restart always --name myapp -p 443:8080 \
+            -e AppConfig__MySqlConnectionString="${{ secrets.MYSQL_CONNECTION_STRING }}" \
+            ghcr.io/${{ github.repository }}:latest  
+        EOF
