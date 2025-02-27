@@ -44,7 +44,7 @@ jobs:
           docker pull ghcr.io/${{ github.repository }}:latest  
           docker stop myapp || true  
           docker rm myapp || true  
-          docker run -d --restart always --name myapp -p 443:8080 \
+          docker run -d --restart always --name myapp -p 8080:8080 \
             -e AppConfig__MySqlConnectionString="${{ secrets.MYSQL_CONNECTION_STRING }}" \
             ghcr.io/${{ github.repository }}:latest  
         EOF
